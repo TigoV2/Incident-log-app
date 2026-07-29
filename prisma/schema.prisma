@@ -26,6 +26,7 @@ model Incident {
   createdById String
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
+  resolvedAt  DateTime?
   createdBy   User     @relation(fields: [createdById], references: [id])
 }
 
