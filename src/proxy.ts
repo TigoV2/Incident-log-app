@@ -8,8 +8,7 @@ export default auth((req) => {
   const isLoginPage = pathname === "/login";
   const isAuthRoute = pathname.startsWith("/api/auth");
 
-  const isPublicRoute =
-    isLoginPage || isAuthRoute;
+  const isPublicRoute = isLoginPage || isAuthRoute;
 
   // Not logged in → block protected routes
   if (!isLoggedIn && !isPublicRoute) {
@@ -38,6 +37,6 @@ export const config = {
      *
      * API auth routes are handled inside the proxy.
      */
-    "/((?!_next/static|_next/image|favicon.ico).*)",
+    "/((?!_next/static|_next/image|favicon.ico|.*\\..*).*)",
   ],
 };

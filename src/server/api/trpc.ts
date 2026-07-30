@@ -35,6 +35,18 @@ const isAuthenticated = t.middleware(({ ctx, next }) => {
   });
 });
 
+const isAdmin = t.middleware(({ ctx, next }) => {
+  if (ctx.session?.user.role !== "ADMIN") {
+    throw new TRPCError({
+      code: "FORBIDDEN",
+      message: "Admins only",
+    });
+  }
+
+  return next();
+});
+
 export const createTRPCRouter = t.router;
 export const publicProcedure = t.procedure;
 export const protectedProcedure = t.procedure.use(isAuthenticated);
+export const adminProcedure = protectedProcedure.use(isAdmin);

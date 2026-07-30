@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { Status } from "@prisma/client";
 
 import { createTRPCRouter, protectedProcedure } from "@/server/api/trpc";
 
@@ -60,16 +61,17 @@ const resolve = protectedProcedure
       throw new Error("Incident not found");
     }
 
-    if (incident.status === "RESOLVED") {
+    if (incident.status === Status.RESOLVED) {
       return incident;
     }
 
     return ctx.prisma.incident.update({
       where: {
         id: input.id,
+        status: Status.OPEN,
       },
       data: {
-        status: "RESOLVED",
+        status: Status.RESOLVED,
         resolvedAt: new Date(),
       },
     });
