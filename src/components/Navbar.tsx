@@ -15,6 +15,10 @@ export default function Navbar() {
         <Link href="/users">
           Users
         </Link>
+        
+        <Link href="/how-it-works">
+          How it Works
+        </Link>
       </div>
     </nav>
   );

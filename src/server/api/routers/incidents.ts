@@ -3,8 +3,20 @@ import { Status } from "@prisma/client";
 
 import { createTRPCRouter, protectedProcedure } from "@/server/api/trpc";
 
+const severityOrder = {
+  CRITICAL: 4,
+  HIGH: 3,
+  MEDIUM: 2,
+  LOW: 1,
+} as const;
+
+const statusOrder = {
+  OPEN: 0,
+  RESOLVED: 1,
+} as const;
+
 const list = protectedProcedure.query(async ({ ctx }) => {
-  return ctx.prisma.incident.findMany({
+  const incidents = await ctx.prisma.incident.findMany({
     include: {
       createdBy: {
         select: {
@@ -17,6 +29,14 @@ const list = protectedProcedure.query(async ({ ctx }) => {
     orderBy: {
       createdAt: "desc",
     },
+  });
+
+  return incidents.sort((a, b) => {
+    if (a.status !== b.status) {
+      return statusOrder[a.status] - statusOrder[b.status];
+    }
+
+    return severityOrder[b.severity] - severityOrder[a.severity];
   });
 });
 
