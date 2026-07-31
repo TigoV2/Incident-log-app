@@ -13,21 +13,21 @@ export default function HomePage() {
           href="/incidents"
           className="rounded-lg border bg-white p-6 shadow-sm transition hover:shadow-md"
         >
-          <h2 className="font-semibold">Incidents</h2>
+          <h2 className="font-bold text-gray-900">Incidents</h2>
         </Link>
 
         <Link
           href="/users"
           className="rounded-lg border bg-white p-6 shadow-sm transition hover:shadow-md"
         >
-          <h2 className="font-semibold">Users</h2>
+          <h2 className="font-bold text-gray-900">Users</h2>
         </Link>
 
         <Link
           href="/how-it-works"
           className="rounded-lg border bg-white p-6 shadow-sm transition hover:shadow-md"
         >
-          <h2 className="font-semibold">How it Works</h2>
+          <h2 className="font-bold text-gray-900">How it Works</h2>
         </Link>
       </div>
     </PageContainer>

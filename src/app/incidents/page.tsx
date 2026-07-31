@@ -51,7 +51,7 @@ export default function IncidentsPage() {
   return (
     <main className="mx-auto max-w-5xl p-6">
       <header className="mb-8">
-        <h1 className="text-3xl font-bold">Incidents</h1>
+        <h1 className="text-3xl font-bold text-gray-900">Incidents</h1>
       </header>
 
       <section className="mb-8 rounded-xl border bg-white p-6 shadow-sm">
@@ -76,7 +76,7 @@ export default function IncidentsPage() {
             <select
               value={severity}
               onChange={(e) => setSeverity(e.target.value as Severity)}
-              className="rounded-lg border p-3"
+              className="rounded-lg border border-gray-300 bg-white p-3 text-gray-900 outline-none focus:border-black focus:ring-2 focus:ring-black"
             >
               <option value="LOW">Low</option>
               <option value="MEDIUM">Medium</option>
@@ -107,11 +107,11 @@ export default function IncidentsPage() {
         {incidents?.map((inc) => (
           <article
             key={inc.id}
-            className="rounded-xl border bg-white p-5 shadow-sm"
+            className="rounded-xl border bg-white p-5 shadow-sm text-gray-900"
           >
             <div className="flex items-start justify-between gap-4">
               <div>
-                <h2 className="text-lg font-semibold">{inc.title}</h2>
+                <h2 className="text-lg font-semibold text-gray-900">{inc.title}</h2>
 
                 <p className="mt-2 text-gray-600">
                   {inc.description}

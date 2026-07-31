@@ -44,7 +44,7 @@ export default function Users() {
   return (
     <main className="mx-auto max-w-5xl p-6">
       <header className="mb-8">
-        <h1 className="text-3xl font-bold">Users</h1>
+        <h1 className="text-3xl font-bold text-gray-900">Users</h1>
       </header>
 
       <section className="mb-8 rounded-xl border bg-white p-6 shadow-sm">
@@ -71,7 +71,7 @@ export default function Users() {
             <select
               value={role}
               onChange={(e) => setRole(e.target.value as Role)}
-              className="rounded-lg border p-3"
+              className="rounded-lg border border-gray-300 bg-white p-3 text-gray-900 focus:border-black focus:outline-none"
             >
               <option value="USER">User</option>
               <option value="ADMIN">Admin</option>
@@ -100,11 +100,11 @@ export default function Users() {
         {users?.map((user) => (
           <article
             key={user.id}
-            className="rounded-xl border bg-white p-5 shadow-sm"
+            className="rounded-xl border bg-white p-5 shadow-sm text-gray-900"
           >
             <div className="flex items-center justify-between gap-4">
               <div>
-                <h2 className="font-semibold">{user.email}</h2>
+                <h2 className="font-semibold text-gray-900">{user.email}</h2>
 
                 <div className="mt-3 flex gap-2">
                   <span
